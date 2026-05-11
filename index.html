@@ -383,17 +383,10 @@
   </div>
 
   <!-- Photo -->
-  <div class="photo-section">
-    <div class="photo-frame" id="photoFrame">
-      <div class="photo-placeholder" id="photoPlaceholder">
-        <span>🌸</span>
-        <p>Your photo goes here</p>
-      </div>
-      <img id="photoImg" src="" alt="Birthday photo" style="display:none;">
-      <div class="photo-sparkles">✨</div>
-    </div>
-  </div>
-
+<div class="photo-frame" id="photoFrame">
+  <img id="photoImg" src="photo.jpg" alt="Shahanas" style="width:180px;height:180px;border-radius:50%;object-fit:cover;display:block;border:4px solid var(--cream);">
+  <div class="photo-sparkles">✨</div>
+</div>
   <!-- Balloons -->
   <div class="balloons">
     <div class="balloon">🎈</div>
@@ -630,26 +623,7 @@ document.body.addEventListener('click', function autoPlay() {
   document.body.removeEventListener('click', autoPlay);
 }, { once: true });
 
-// ─── Photo upload via input (hidden) ──────────────────────────────
-// Allow tapping the photo area to upload
-const photoInput = document.createElement('input');
-photoInput.type = 'file';
-photoInput.accept = 'image/*';
-photoInput.style.display = 'none';
-document.body.appendChild(photoInput);
-document.getElementById('photoFrame').addEventListener('click', () => photoInput.click());
-photoInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    const img = document.getElementById('photoImg');
-    img.src = ev.target.result;
-    img.style.display = 'block';
-    document.getElementById('photoPlaceholder').style.display = 'none';
-  };
-  reader.readAsDataURL(file);
-});
+// Photo loads directly from photo.jpg in the same folder
 </script>
 </body>
 </html>
